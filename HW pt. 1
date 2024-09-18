@@ -1,0 +1,19 @@
+class Program
+{
+   using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Define the values of X and Y
+        double X = 2.5;
+        double Y = 3.3;
+
+        // Calculate the value of Z
+        double Z = 4 * X * X + 3 * Y;
+
+    
+        Console.WriteLine($"The value of Z when X = {X} and Y = {Y} is: {Z:F2}");
+    }
+}
