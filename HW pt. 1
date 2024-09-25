@@ -1,9 +1,5 @@
 class Program
 {
-   using System;
-
-class Program
-{
     static void Main()
     {
         // Define the values of X and Y
