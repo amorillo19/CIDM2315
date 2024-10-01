@@ -1,0 +1,83 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Please input letter grade:");
+        string grade = Console.ReadLine().ToUpper(); // Convert input to uppercase
+
+        int gpaPoints;
+
+        switch (grade)
+        {
+            case "A":
+                gpaPoints = 4;
+                break;
+            case "B":
+                gpaPoints = 3;
+                break;
+            case "C":
+                gpaPoints = 2;
+                break;
+            case "D":
+                gpaPoints = 1;
+                break;
+            case "F":
+                gpaPoints = 0;
+                break;
+            default:
+                Console.WriteLine("Wrong Letter Grade!");
+                return; // Exit the program if the grade is invalid
+        }
+
+        Console.WriteLine($"The corresponding GPA points for grade {grade} is: {gpaPoints}");
+    }
+}
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Prompt the user for three numbers
+        Console.Write("Please input first number: ");
+        int num1 = Convert.ToInt16(Console.ReadLine());
+
+        Console.Write("Please input second number: ");
+        int num2 = Convert.ToInt16(Console.ReadLine());
+
+        Console.Write("Please input third number: ");
+        int num3 = Convert.ToInt16(Console.ReadLine());
+
+        // Variable to hold the smallest number
+        int smallest;
+
+        // Determine the smallest number using nested if statements
+        if (num1 < num2)
+        {
+            if (num1 < num3)
+            {
+                smallest = num1; // num1 is the smallest
+            }
+            else
+            {
+                smallest = num3; // num3 is the smallest
+            }
+        }
+        else
+        {
+            if (num2 < num3)
+            {
+                smallest = num2; // num2 is the smallest
+            }
+            else
+            {
+                smallest = num3; // num3 is the smallest
+            }
+        }
+
+        // Output the smallest number
+        Console.WriteLine($"The smallest value is: {smallest}");
+    }
+}
