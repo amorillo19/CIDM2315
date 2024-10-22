@@ -1,0 +1,138 @@
+using System;
+
+class Program
+{
+    // Method to get the largest of two integers
+    static int GetLargest(int a, int b)
+    {
+        return a > b ? a : b;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter the first integer (a):");
+        int a = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the second integer (b):");
+        int b = int.Parse(Console.ReadLine());
+
+        int largestNumber = GetLargest(a, b);
+        Console.WriteLine($"The largest number is: {largestNumber}");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+using System;
+
+class Program
+{
+    // Method to get the largest of two integers
+    static int GetLargest(int a, int b)
+    {
+        return a > b ? a : b;
+    }
+
+    static int GetLargestOfFour(int a, int b, int c, int d)
+    {
+        int largestAB = GetLargest(a, b);
+        int largestCD = GetLargest(c, d);
+        return GetLargest(largestAB, largestCD);
+    }
+
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Enter the first integer (a):");
+        int a = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the second integer (b):");
+        int b = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the third integer (c):");
+        int c = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter the fourth integer (d):");
+        int d = int.Parse(Console.ReadLine());
+
+        int largestNumber = GetLargestOfFour(a, b, c, d);
+        Console.WriteLine($"The largest number is: {largestNumber}");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+using System;
+
+class Program
+{
+    static bool CheckAge(int birthYear)
+    {
+        int currentYear = DateTime.Now.Year;
+        int age = currentYear - birthYear;
+
+        return age >= 18; // Return true if age is 18 or older, otherwise false
+    }
+
+    static void CreateAccount()
+    {
+        // Ask user for input
+        Console.WriteLine("Enter username:");
+        string username = Console.ReadLine();
+
+        Console.WriteLine("Enter password:");
+        string password = Console.ReadLine();
+
+        Console.WriteLine("Enter password again:");
+        string confirmPassword = Console.ReadLine();
+
+        Console.WriteLine("Enter birth year:");
+        int birthYear;
+        
+        // Validate that birthYear is an integer
+        while (!int.TryParse(Console.ReadLine(), out birthYear))
+        {
+            Console.WriteLine("Please enter a valid birth year:");
+        }
+
+        // Check age
+        if (CheckAge(birthYear))
+        {
+            if (password == confirmPassword)
+            {
+                Console.WriteLine("Account is created successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Wrong password.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Could not create an account.");
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        CreateAccount(); // Call the CreateAccount method
+    }
+}
