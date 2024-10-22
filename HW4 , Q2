@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    // Method to print a triangle based on shape and size
+    static void PrintTriangle(int N, string shape)
+    {
+        Console.WriteLine($"N: {N}, Shape: {shape}");
+
+        if (shape.ToLower() == "left")
+        {
+            for (int i = 1; i <= N; i++)
+            {
+                Console.WriteLine(new string('*', i));
+            }
+        }
+        else if (shape.ToLower() == "right")
+        {
+            for (int i = 1; i <= N; i++)
+            {
+                Console.WriteLine(new string(' ', N - i) + new string('*', i));
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid shape. Please specify 'left' or 'right'.");
+        }
+    }
+
+    static void Main(string[] args)
+    {
+        int N = 5;
+
+        // Call method for left triangle
+        PrintTriangle(N, "left");
+
+        Console.WriteLine(); // Add a blank line for separation
+
+        // Call method for right triangle
+        PrintTriangle(N, "right");
+    }
+}
