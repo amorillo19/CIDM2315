@@ -1,0 +1,20 @@
+using System;
+
+class Program
+{
+    // Method to find the largest of two numbers
+    static int FindLargest(int a, int b)
+    {
+        return a > b ? a : b;
+    }
+
+    static void Main(string[] args)
+    {
+        int a = 3;
+        int b = 5;
+
+        int largest = FindLargest(a, b);
+        Console.WriteLine($"The largest number is: {largest}");
+    }
+}
+ 
