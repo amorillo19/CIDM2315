@@ -1,1 +1,138 @@
+using System;
+
+public class HumanPlayer
+{
+    private int points; // the points that the human player has
+
+    // Constructor to set initial points
+    public HumanPlayer(int initial)
+    {
+        points = initial;
+    }
+
+    // Method to get the current points of the human player
+    public int GetPoints()
+    {
+        return points;
+    }
+
+    // Method to increase points by 5 when the human player wins a round
+    public void WinRound()
+    {
+        points += 5;
+    }
+
+    // Method to decrease points by 5 when the human player loses a round
+    public void LoseRound()
+    {
+        points -= 5;
+    }
+
+    // Method to get the human player's decision (Rock, Paper, or Scissors)
+    public string HumanDecision()
+    {
+        Console.WriteLine("Enter your choice (Rock, Paper, or Scissors): ");
+        string choice = Console.ReadLine().Trim().ToLower();
+
+        // Ensure the input is valid
+        while (choice != "rock" && choice != "paper" && choice != "scissors")
+        {
+            Console.WriteLine("Invalid choice! Please enter Rock, Paper, or Scissors: ");
+            choice = Console.ReadLine().Trim().ToLower();
+        }
+
+        return choice;
+    }
+}
+
+
+using System;
+
+public class ComputerPlayer
+{
+    private Random rand = new Random();
+
+    // Method to randomly pick a shape (Rock, Paper, or Scissors)
+    public string ComputerDecision()
+    {
+        int choice = rand.Next(3); // Generates a random number between 0 and 2
+
+        switch (choice)
+        {
+            case 0:
+                return "rock";
+            case 1:
+                return "paper";
+            case 2:
+                return "scissors";
+            default:
+                return "rock"; // Default case (this should never happen)
+        }
+    }
+}
+
+
+
+
+using System;
+
+public class RockPaperScissors
+{
+    public static void Main(string[] args)
+    {
+        // Initialize the human player with 5 points and the computer player
+        HumanPlayer human = new HumanPlayer(5);
+        ComputerPlayer computer = new ComputerPlayer();
+
+        // Game loop
+        while (human.GetPoints() > 0)
+        {
+            // Display the current points of the human player
+            Console.WriteLine($"Your current points: {human.GetPoints()}");
+
+            // Get the human player's decision
+            string humanChoice = human.HumanDecision();
+
+            // Get the computer player's decision
+            string computerChoice = computer.ComputerDecision();
+            Console.WriteLine($"Computer chose: {computerChoice}");
+
+            // Determine the outcome of the round
+            if (humanChoice == computerChoice)
+            {
+                Console.WriteLine("It's a tie! No points awarded.");
+            }
+            else if (
+                (humanChoice == "rock" && computerChoice == "scissors") ||
+                (humanChoice == "paper" && computerChoice == "rock") ||
+                (humanChoice == "scissors" && computerChoice == "paper"))
+            {
+                Console.WriteLine("You win this round! You gain 5 points.");
+                human.WinRound();
+            }
+            else
+            {
+                Console.WriteLine("You lose this round! You lose 5 points.");
+                human.LoseRound();
+            }
+
+            // Check if the human player has lost all points
+            if (human.GetPoints() <= 0)
+            {
+                Console.WriteLine("Game Over! You've run out of points.");
+                break;
+            }
+
+            // Ask the human player if they want to play another round
+            Console.WriteLine("Do you want to play another round? (y/n): ");
+            string playAgain = Console.ReadLine().Trim().ToLower();
+
+            if (playAgain != "y")
+            {
+                Console.WriteLine("Thank you for playing! Goodbye!");
+                break;
+            }
+        }
+    }
+}
 
