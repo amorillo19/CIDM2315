@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+
+class Student
+{
+    // Private fields
+    private int studentID;
+    private string studentName;
+
+    // Public static list to hold all student objects
+    public static List<Student> studentList = new List<Student>();
+
+    // Constructor
+    public Student(int id, string name)
+    {
+        studentID = id;
+        studentName = name;
+
+        // Add the student object to the studentList
+        studentList.Add(this);
+    }
+
+    // Public method to print student information
+    public void PrintInfo()
+    {
+        Console.WriteLine($"Student ID: {studentID}, Student Name: {studentName}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Step 2: Create 4 students and add them to studentList
+        Student student1 = new Student(111, "Alice");
+        Student student2 = new Student(222, "Bob");
+        Student student3 = new Student(333, "Cathy");
+        Student student4 = new Student(444, "David");
+
+        // Step 3: Create a Dictionary for gradebook
+        Dictionary<string, double> gradebook = new Dictionary<string, double>
+        {
+            { "Alice", 4.0 },
+            { "Bob", 3.6 },
+            { "Cathy", 2.5 },
+            { "David", 1.8 }
+        };
+
+        // Step 4: Check if "Tom" has a record and insert if not
+        if (!gradebook.ContainsKey("Tom"))
+        {
+            gradebook.Add("Tom", 3.3);  // Insert Tom with a GPA of 3.3
+        }
+
+        // Step 5: Calculate the average GPA
+        double totalGPA = 0;
+        foreach (var gpa in gradebook.Values)
+        {
+            totalGPA += gpa;
+        }
+        double averageGPA = totalGPA / gradebook.Count;
+        Console.WriteLine($"Average GPA: {averageGPA:F2}");
+
+        // Step 6: Print out students with GPA greater than average GPA
+        Console.WriteLine("\nStudents with GPA greater than the average:");
+        foreach (var student in Student.studentList)
+        {
+            if (gradebook[student.studentName] > averageGPA)
+            {
+                student.PrintInfo();
+            }
+        }
+    }
+}
